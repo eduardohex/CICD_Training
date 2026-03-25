@@ -1,0 +1,28 @@
+#!/usr/bin/env sh
+
+# Validates that commit messages follow the Conventional Commits spec:
+# https://www.conventionalcommits.org/
+#
+# Valid examples:
+#   feat: add login page
+#   fix(auth): handle token expiry
+#   chore!: drop Node 16 support
+#   ci(workflows): add post-merge job
+
+COMMIT_MSG_FILE="$1"
+COMMIT_MSG=$(cat "$COMMIT_MSG_FILE")
+
+# Regex: type(optional-scope)optional-!: description
+PATTERN="^(build|chore|ci|docs|feat|fix|perf|refactor|revert|style|test)(\([a-z0-9_-]+\))?(!)?: .{1,100}$"
+
+if ! echo "$COMMIT_MSG" | grep -qE "$PATTERN"; then
+  echo ""
+  echo "  ✖ Invalid commit message format."
+  echo ""
+  echo "  Expected: <type>(<scope>): <description>"
+  echo "  Example:  feat(tests): add page search test"
+  echo ""
+  echo "  Allowed types: build | chore | ci | docs | feat | fix | perf | refactor | revert | style | test"
+  echo ""
+  exit 1
+fi
