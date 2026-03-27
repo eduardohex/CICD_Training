@@ -33,4 +33,4 @@ jobs:
           destination_dir: reports/${{ github.run_id }}
 
       - name: Visit URL
-        run: echo "Test Results - https://elblad.github.io/Hexaware_AutomationFW/reports/${{ github.run_id }}/"
+        run: echo "Test Results - https://eduardohex.github.io/CICD_Training/reports/${{ github.run_id }}/"
