@@ -35,5 +35,8 @@
   "editor.insertSpaces": true,
   "files.eol": "\n",
   "files.trimTrailingWhitespace": true,
-  "files.insertFinalNewline": true
+  "files.insertFinalNewline": true,
+
+  // ── Recommended extensions (shown as suggestions) ────────────────────────
+  "extensions.ignoreRecommendations": false
 }
