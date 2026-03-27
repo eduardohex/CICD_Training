@@ -11,9 +11,9 @@ test.describe('Table test', () => {
     await page.locator('label').filter({ hasText: 'Beginner' }).click();
     await page.getByRole('checkbox', { name: 'Intermediate' }).uncheck();
     const advancedLocator = page.getByRole('checkbox', { name: 'Advanced' });
-    await page.screenshot({
-      path: 'test-results/advanced.png',
-      fullPage: true,
+    await test.info().attach('advanced_only', {
+      body: await page.screenshot({ fullPage: true }),
+      contentType: 'image/png',
     });
     await expect(advancedLocator).toBeChecked();
   });
