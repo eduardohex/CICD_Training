@@ -30,3 +30,11 @@ jobs:
 
       - name: TypeScript type check
         run: npm run type-check
+        
+      - name: Post PR comment
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh pr comment ${{ github.event.pull_request.number }} \
+            --repo ${{ github.repository }} \
+            --body "⚠️ **Before merging**, please manually run the [Testing workflow](https://github.com/eduardohex/CICD_Training/actions/workflows/deploy-report.yml) and confirm it passes."
