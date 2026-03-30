@@ -13,7 +13,6 @@ test.describe('Practice Automation', () => {
     });
     await expect(page).toHaveTitle('Test Login | Practice Test Automation');
   });
-
   test('should login', async ({ page }) => {
     const expected = 'Logged In Successfully';
     const username = page.getByRole('textbox', { name: 'Username' });
@@ -22,7 +21,7 @@ test.describe('Practice Automation', () => {
     await password.fill('Password123');
     await page.getByRole('button', { name: 'Submit' }).click();
     const successMessage = page.getByRole('heading', { name: expected });
-    await test.info().attach('title_validation', {
+    await test.info().attach('login_validation', {
       body: await page.screenshot({ fullPage: true }),
       contentType: 'image/png',
     });
